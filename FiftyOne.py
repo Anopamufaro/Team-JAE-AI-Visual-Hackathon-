@@ -6,21 +6,28 @@ name = "EYEDATASET"
 # The directory containing the dataset to import
 dataset_dir = "C:\\Users\\Natha\\Documents\\Anopamufaro's Folder\\Hackathons\\AI Hackathon 2025\\Preprocessed images\\"
 
-# LOAD IN CSV FILE INTO PANDAS
+import pandas as pd
 
-# ITERATE THROUGH CSV
+# Define the file path (update this with your actual file path)
+file_path = "your_file.csv"  # Replace with your actual CSV file path
+
+# Load the CSV file into a Pandas DataFrame
+df = pd.read_csv(file_path)
+
+# Display the first few rows of the dataset
+print(df.head())
 
 dataset = fo.Dataset()
 
 samples = []
-for row in csv.iterrows():
-    left_file
-    right_file
-    left_c
-    right_c
-    age
-    sex
-    patient_id
+for index, row in df.iterrows():
+    left_file = row['Left-Fundus']
+    right_file = row['Right-Fundus']
+    left_c = row['Left-Diagnostic Keywords']
+    right_c = row['Right-Diagnostic Keywords']
+    age = row['Patient Age']
+    sex = row['Patient Sex']
+    patient_id = row['ID']
 
     sample1 = fo.Sample(dataset_dir+left_file)
     sample2 = fo.Sample(dataset_dir+right_file)
@@ -35,9 +42,7 @@ for row in csv.iterrows():
     samples.append(sample1)
     samples.append(sample2)
 
-datgaset.add_samples(samples)
-
-
+dataset.add_samples(samples)
 
 # Create a dataset from a directory of images
 dataset = fo.Dataset.from_images_dir("/path/to/images")
